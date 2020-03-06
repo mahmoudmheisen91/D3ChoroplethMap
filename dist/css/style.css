@@ -57,3 +57,8 @@ footer {
 #description {
   font-size: 1.25rem;
 }
+
+.svg-graph {
+  border: 2px solid white;
+  margin: 20px 15px;
+}
