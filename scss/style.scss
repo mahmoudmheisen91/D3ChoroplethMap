@@ -1,0 +1,63 @@
+// Basic normalization:
+*,
+::before,
+::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+// Globals:
+$theme-color-1: #fcf951ff;
+$theme-color-bg: #422057ff;
+
+// Style:
+html {
+  background-color: white;
+}
+
+#root {
+  background-color: $theme-color-bg;
+  margin: 40px 100px;
+  border-radius: 10px;
+  box-shadow: 15px 15px 6px 6px rgba(0, 0, 0, 0.4);
+}
+
+header,
+footer {
+  background-color: $theme-color-1;
+  color: $theme-color-bg;
+  margin: 0px 10px;
+  padding: 10px;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+header {
+  position: relative;
+  top: 20px;
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+main {
+  padding: 40px 0px;
+  color: $theme-color-1;
+  text-align: center;
+}
+
+footer {
+  position: relative;
+  bottom: 20px;
+  text-align: right;
+  font-size: 1.25rem;
+}
+
+#title {
+  font-size: 1.75rem;
+}
+
+#description {
+  font-size: 1.25rem;
+}
