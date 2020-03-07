@@ -50,9 +50,25 @@ function draw(edu, us_map) {
     .select(".vis-container")
     .append("svg")
     .attr("class", "svg-graph")
-    .attr("viewBox", [0, 0, w, h])
+    .attr("viewBox", [-margin.left, 0, w, h])
     .attr("preserveAspectRatio", "xMidYMid meet");
 
+  // Legend:
+  svg
+    .append("g")
+    .attr("id", "legend")
+    .attr("transform", "translate(315, 0)")
+    .append(() =>
+      legend({
+        color,
+        title: "Education Rate (%):",
+        width: 64 * 6,
+        height: 60,
+        tickFormat: d3.format("0.1f")
+      })
+    );
+
+  // Main plot:
   svg
     .append("g")
     .selectAll("path")
@@ -86,7 +102,8 @@ function draw(edu, us_map) {
             data[0].area_name +
             "<br/>" +
             "Education: " +
-            data[0].bachelorsOrHigher
+            data[0].bachelorsOrHigher +
+            "%"
           );
         })
         .style("left", d3.event.pageX + 20 + "px")

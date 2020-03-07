@@ -65,7 +65,7 @@ footer {
 .svg-graph {
   // border: 2px solid white;
   margin: 20px 15px;
-  padding-left: 40px;
+  // padding-left: 40px;
 }
 
 #tooltip {
@@ -80,4 +80,9 @@ footer {
   border-radius: 10px;
   pointer-events: none;
   color: $theme-color-bg;
+}
+
+#legend {
+  stroke: none;
+  stroke-width: 1px;
 }
