@@ -4,17 +4,22 @@ const us_edu_url =
 const us_map_url =
   "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json";
 
-// Fetch Data:
-d3.queue()
-  .defer(d3.json, us_edu_url)
-  .defer(d3.json, us_map_url)
-  .await(draw);
+// Fetch API requesting multiple get requests:
+document.addEventListener("DOMContentLoaded", () => {
+  Promise.all([
+    fetch(us_edu_url).then(response => response.json()),
+    fetch(us_map_url).then(response => response.json())
+  ])
+    .then(([edu, us_map]) => {
+      draw(edu, us_map);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
 // Draw SVG:
-function draw(error, edu, us_map) {
-  // Error:
-  if (error) console.log(error);
-
+function draw(edu, us_map) {
   // Globals:
   const width = 1200;
   const height = 700;
