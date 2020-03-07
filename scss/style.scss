@@ -67,3 +67,17 @@ footer {
   margin: 20px 15px;
   padding-left: 40px;
 }
+
+#tooltip {
+  position: absolute;
+  max-width: 150px;
+  min-width: 150px;
+  word-wrap: break-word;
+  display: none;
+  padding: 12px;
+  font-size: 16px;
+  background: $theme-color-1;
+  border-radius: 10px;
+  pointer-events: none;
+  color: $theme-color-bg;
+}

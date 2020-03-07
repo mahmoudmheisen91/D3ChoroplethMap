@@ -43,6 +43,8 @@ function draw(edu, us_map) {
     .domain(d3.range(minEdu, maxEdu, step))
     .range(d3.schemeYlGnBu[9]);
 
+  let toolTip = d3.select("#tooltip");
+
   // SVG:
   let svg = d3
     .select(".vis-container")
@@ -67,7 +69,32 @@ function draw(edu, us_map) {
       let data = edu.filter(obj => obj.fips == d.id);
       return data[0] ? color(data[0].bachelorsOrHigher) : color(0);
     })
-    .attr("d", path);
+    .attr("d", path)
+    .on("mouseover", d1 => {
+      toolTip
+        .style("display", "block")
+        .attr("data-education", () => {
+          let data = edu.filter(obj => obj.fips == d1.id);
+          return data[0] ? data[0].bachelorsOrHigher : 0;
+        })
+        .html(() => {
+          let data = edu.filter(obj => obj.fips == d1.id);
+          return (
+            "State: " +
+            data[0].state +
+            "<br/>" +
+            data[0].area_name +
+            "<br/>" +
+            "Education: " +
+            data[0].bachelorsOrHigher
+          );
+        })
+        .style("left", d3.event.pageX + 20 + "px")
+        .style("top", d3.event.pageY - 45 + "px");
+    })
+    .on("mouseout", d => {
+      toolTip.style("display", "none");
+    });
 
   svg
     .append("path")
